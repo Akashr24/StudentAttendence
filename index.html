@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Class Attendance Tracker</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div class="login-page">
+    <div class="login-box">
+        <h2>Login</h2>
+        <form id="loginForm">
+            <input type="text" placeholder="Username" required>
+            <input type="password" placeholder="Password" required>
+            <button type="submit">Login</button>
+        </form>
+    </div>
+</div>
+
+<div class="dashboard" style="display: none;">
+    <h1>Attendance Dashboard</h1>
+    <div class="chart-container">
+        <canvas id="attendanceChart"></canvas>
+    </div>
+    <button id="takeAttendanceButton">Take Attendance</button>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    document.getElementById('loginForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        document.querySelector('.login-page').style.display = 'none';
+        document.querySelector('.dashboard').style.display = 'block';
+
+        const ctx = document.getElementById('attendanceChart').getContext('2d');
+        const attendanceData = {
+            labels: ['Attended', 'Missed'],
+            datasets: [{
+                label: 'Attendance',
+                data: [75, 25], // Example data, replace with actual values
+                backgroundColor: ['#4caf50', '#f44336'],
+            }]
+        };
+        new Chart(ctx, {
+            type: 'pie',
+            data: attendanceData,
+            options: {
+                responsive: true,
+            }
+        });
+    });
+
+    document.getElementById('takeAttendanceButton').addEventListener('click', function() {
+        alert('Attendance has been recorded!');
+    });
+</script>
+
+</body>
+</html>
