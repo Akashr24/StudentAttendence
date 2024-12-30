@@ -1,0 +1,23 @@
+CREATE DATABASE IF NOT EXISTS StudentDB;
+
+-- Use the database
+USE StudentDB;
+
+-- Create the table
+CREATE TABLE IF NOT EXISTS Students (
+    USN VARCHAR(20) PRIMARY KEY,
+    Name VARCHAR(100) NOT NULL
+);
+
+-- Verify the table creation
+SHOW TABLES;
+-- Insert data into the table
+INSERT INTO Students (USN, Name)
+VALUES
+    ('USN001', 'Abhishek kini'),
+    ('USN002', 'Adarsh A'),
+    ('USN003', 'Aditya ');
+
+-- View the inserted data
+SELECT * FROM Students;
+
